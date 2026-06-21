@@ -1,14 +1,4 @@
-# Python-generated files
-__pycache__/
-*.pth
-build/
-dist/
-wheels/
-*.egg-info
-
-# Virtual environments
-.venv
-cfg
-weights
-data
-*DS*
+.DS_Store
+**/.DS_Store
+**/__pycache__/
+**/.venv/
