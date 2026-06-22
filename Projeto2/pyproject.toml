@@ -1,0 +1,20 @@
+[project]
+name = "projeto2-ms671"
+version = "0.1.0"
+description = "Projeto 2 da disciplina MS671 — tradução de datas com redes neurais e atenção"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "h5py>=3.10,<4",
+    "matplotlib>=3.8,<4",
+    "numpy>=1.26,<2",
+    "pandas>=2.2,<3",
+    "scikit-learn>=1.4,<2",
+    "tensorflow>=2.16,<2.19",
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.uv]
+package = false
