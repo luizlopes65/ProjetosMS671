@@ -4,7 +4,8 @@ from sklearn.model_selection import train_test_split
 import os
 import json
 
-
+Tx = 30   # tamanho máximo da string de entrada
+Ty = 10   # tamanho da saída YYYY-MM-DD
 
 def partition_data(data_csv, test_size=0.1):
     X_train, X_test, y_train, y_test = train_test_split(
