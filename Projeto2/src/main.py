@@ -63,3 +63,72 @@ print(
     "Soma das probabilidades da primeira saída:",
     float(np.sum(predictions[0][0])),
 )
+
+# Descobre o número total de exemplos de treino e teste
+m_treino = X_train_one_hot.shape[0]
+m_teste = X_teste.shape[0]
+
+# Estados iniciais zerados para o treino
+s0_treino = np.zeros((m_treino, n_s), dtype=np.float32)
+c0_treino = np.zeros((m_treino, n_s), dtype=np.float32)
+
+# Estados iniciais zerados para o teste
+s0_teste = np.zeros((m_teste, n_s), dtype=np.float32)
+c0_teste = np.zeros((m_teste, n_s), dtype=np.float32)
+
+EPOCHS = 100       # Quantas vezes o modelo vai ver todo o dataset
+BATCH_SIZE = 100   # Quantos exemplos ele processa por vez antes de atualizar os pesos
+
+print("\n--- Iniciando o Treinamento ---")
+historico = model.fit(
+    x=[X_train_one_hot, s0_treino, c0_treino], # As 3 entradas exigidas
+    y=Y_train_outputs,                         # A lista com as 10 saídas esperadas
+    epochs=EPOCHS,
+    batch_size=BATCH_SIZE,
+    validation_split=0.1                       # Separa 10% para validação durante o treino
+)
+
+# Prepara as saídas de teste no formato de lista (Ty elementos)
+Y_test_outputs = [
+    to_categorical(y_teste, num_classes=len(mac_vocab))[:, timestep, :]
+    for timestep in range(Ty)
+]
+
+print("\n--- Avaliando o Modelo com Dados de Teste ---")
+resultados = model.evaluate(
+    x=[to_categorical(X_teste, num_classes=len(human_vocab)), s0_teste, c0_teste],
+    y=Y_test_outputs,
+    batch_size=BATCH_SIZE
+)
+
+def traduzir_data(data_humana):
+    # 1. Coloca a string dentro de um array e pré-processa
+    data_array = np.array([data_humana])
+    data_proc = preprocess_human_data(data_array, human_vocab, Tx)
+    
+    # 2. Transforma em One-Hot
+    data_one_hot = to_categorical(data_proc, num_classes=len(human_vocab))
+    
+    # 3. Cria os estados iniciais zerados (batch_size = 1 neste caso)
+    s0_pred = np.zeros((1, n_s), dtype=np.float32)
+    c0_pred = np.zeros((1, n_s), dtype=np.float32)
+    
+    # 4. Faz a previsão
+    previsoes = model.predict([data_one_hot, s0_pred, c0_pred])
+    
+    # 5. O modelo retorna uma lista de 10 characteres. 
+    # Precisamos pegar o índice de maior probabilidade (argmax) para cada um deles.
+    indices_saida = [np.argmax(caractere[0]) for caractere in previsoes]
+    
+    # 6. Inverte o dicionário mac_vocab para transformar índices de volta em letras
+    inv_mac_vocab = {v: k for k, v in mac_vocab.items()}
+    
+    # 7. Junta os caracteres na string final
+    data_formatada = "".join([inv_mac_vocab[idx] for idx in indices_saida])
+    
+    print(f"Entrada: {data_humana} -> Saída do Modelo: {data_formatada}")
+
+# Exemplo de teste após o modelo estar treinado:
+print("\n--- Testando predições pontuais ---")
+traduzir_data("3 May 1995")
+traduzir_data("05/12/2021")
