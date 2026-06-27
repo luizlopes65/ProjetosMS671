@@ -76,8 +76,8 @@ c0_treino = np.zeros((m_treino, n_s), dtype=np.float32)
 s0_teste = np.zeros((m_teste, n_s), dtype=np.float32)
 c0_teste = np.zeros((m_teste, n_s), dtype=np.float32)
 
-EPOCHS = 100       # Quantas vezes o modelo vai ver todo o dataset
-BATCH_SIZE = 100   # Quantos exemplos ele processa por vez antes de atualizar os pesos
+EPOCHS = 30       # Quantas vezes o modelo vai ver todo o dataset
+BATCH_SIZE = 64   # Quantos exemplos ele processa por vez antes de atualizar os pesos
 
 print("\n--- Iniciando o Treinamento ---")
 historico = model.fit(
