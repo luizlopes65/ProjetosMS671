@@ -129,6 +129,15 @@ def traduzir_data(data_humana):
     print(f"Entrada: {data_humana} -> Saída do Modelo: {data_formatada}")
 
 # Exemplo de teste após o modelo estar treinado:
-print("\n--- Testando predições pontuais ---")
 traduzir_data("3 May 1995")
 traduzir_data("05/12/2021")
+traduzir_data("12 May 1998")           # Formato limpo, por extenso
+traduzir_data("Jan 25, 2015")          # Mês primeiro, com vírgula e abreviado
+traduzir_data("20 AUG 1985")           # Mês abreviado em maiúsculas
+traduzir_data("Sunday, 11 March 2007") # Incluindo o dia da semana (ruído extra)
+traduzir_data("3 de Julho de 1974")    # Formato longo com conectivos "de"
+traduzir_data("1 de fevereiro 2026")   # Mês por extenso em minúsculo
+traduzir_data("30/11/1999")            # Barras (padrão BR)
+traduzir_data("08.12.2004")            # Pontos
+traduzir_data("15-04-2010")            # Hifens
+traduzir_data("02 Sep 21")             # Ano com apenas 2 dígitos (2021)
