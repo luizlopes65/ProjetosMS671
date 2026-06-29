@@ -76,7 +76,7 @@ c0_treino = np.zeros((m_treino, n_s), dtype=np.float32)
 s0_teste = np.zeros((m_teste, n_s), dtype=np.float32)
 c0_teste = np.zeros((m_teste, n_s), dtype=np.float32)
 
-EPOCHS = 30       # Quantas vezes o modelo vai ver todo o dataset
+EPOCHS = 15       # Quantas vezes o modelo vai ver todo o dataset
 BATCH_SIZE = 64   # Quantos exemplos ele processa por vez antes de atualizar os pesos
 
 print("\n--- Iniciando o Treinamento ---")
