@@ -7,7 +7,7 @@ from preprocess_data import (
     preprocess_human_data,
     preprocess_machine_data,
 )
-
+from plot_attention_map import 
 
 Tx = 30  # tamanho máximo da string de entrada
 Ty = 10  # tamanho da saída YYYY-MM-DD
