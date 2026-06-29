@@ -42,7 +42,7 @@ def plot_attention_map(modelx, input_vocabulary, inv_output_vocabulary, text, n_
         s, _, c = modelx.layers[10](context, initial_state = [s, c])
         outputs.append(energies)
 
-    f = Model(inputs=[X, s0, c0], outputs = outputs)
+    f = modelx(inputs=[X, s0, c0], outputs = outputs)
 
 
     s0 = np.zeros((1, n_s))
