@@ -7,7 +7,7 @@ from preprocess_data import (
     preprocess_human_data,
     preprocess_machine_data,
 )
-from plot_attention_map import 
+from plot_attention_map import plot_attention_map
 
 Tx = 30  # tamanho máximo da string de entrada
 Ty = 10  # tamanho da saída YYYY-MM-DD
@@ -141,3 +141,5 @@ traduzir_data("30/11/1999")            # Barras (padrão BR)
 traduzir_data("08.12.2004")            # Pontos
 traduzir_data("15-04-2010")            # Hifens
 traduzir_data("02 Sep 21")             # Ano com apenas 2 dígitos (2021)
+
+plot_attention_map (model, human_vocab, mac_vocab, "3 May 1995", num = 7, n_s = 64)
