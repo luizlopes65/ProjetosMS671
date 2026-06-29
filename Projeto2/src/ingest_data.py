@@ -7,15 +7,16 @@ import json
 Tx = 30   # tamanho máximo da string de entrada
 Ty = 10   # tamanho da saída YYYY-MM-DD
 
-def partition_data(data_csv, test_size=0.1):
+def partition_data(data_csv, test_size=0.1, random_state=42):
     X_train, X_test, y_train, y_test = train_test_split(
         data_csv[:, 0],
         data_csv[:, 1],
         test_size=test_size,
+        random_state=random_state,
     )
     return X_train, y_train, X_test, y_test
 
-def return_data(path):
+def return_data(path, random_state=42):
     data_path = os.path.join(path, "dataset.csv")
     data = pd.read_csv(data_path)
     human_vocab_path = os.path.join(path, "vocabularies/human_vocab.json")
@@ -25,6 +26,6 @@ def return_data(path):
         human_vocab = json.load(f)
     with open(machine_vocab_path, "r", encoding="utf-8") as f:
         machine_vocab = json.load(f)
-    data = partition_data(data.to_numpy())
+    data = partition_data(data.to_numpy(), random_state=random_state)
 
     return data, human_vocab, machine_vocab
