@@ -12,7 +12,7 @@ from plot_attention_map import plot_attention_map
 Tx = 30  # tamanho máximo da string de entrada
 Ty = 10  # tamanho da saída YYYY-MM-DD
 n_a = 32  # unidades da LSTM em cada direção do encoder
-n_s = 64  # unidades da LSTM decoder
+n_s = 32  # unidades da LSTM decoder
 
 (X_treino, y_treino, X_teste, y_teste), human_vocab, mac_vocab = return_data("data")
 
@@ -76,7 +76,7 @@ c0_treino = np.zeros((m_treino, n_s), dtype=np.float32)
 s0_teste = np.zeros((m_teste, n_s), dtype=np.float32)
 c0_teste = np.zeros((m_teste, n_s), dtype=np.float32)
 
-EPOCHS = 15       # Quantas vezes o modelo vai ver todo o dataset
+EPOCHS = 50       # Quantas vezes o modelo vai ver todo o dataset
 BATCH_SIZE = 64   # Quantos exemplos ele processa por vez antes de atualizar os pesos
 
 print("\n--- Iniciando o Treinamento ---")
