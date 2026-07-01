@@ -109,8 +109,8 @@ def plot_attention_map(modelx, input_vocabulary, output_vocabulary, text, n_s = 
     ax.grid(False) # Desliga linhas de grade sobrepostas ao mapa
 
     # Salva ou exibe o gráfico
-    plt.savefig('attention_map.png', bbox_inches='tight')
-    print("Mapa de atenção gerado com sucesso e salvo como 'attention_map.png'!")
+    plt.savefig(filename, bbox_inches='tight')
+    print("Mapa de atenção gerado com sucesso e salvo como '{filename}'!")
     plt.close()
 
     return attention_map
