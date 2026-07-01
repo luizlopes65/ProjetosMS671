@@ -142,8 +142,8 @@ traduzir_data("08.12.2004")            # Pontos
 traduzir_data("15-04-2010")            # Hifens
 traduzir_data("02 Sep 21")             # Ano com apenas 2 dígitos (2021)
 
-plot_attention_map (model, human_vocab, mac_vocab, "3 May 1995", num = 7, n_s = 64)
-plot_attention_map (model, human_vocab, mac_vocab, "02 Sep 21", num = 7, n_s = 64)
-plot_attention_map (model, human_vocab, mac_vocab, "3 de Julho de 1974", num = 7, n_s = 64)
-plot_attention_map (model, human_vocab, mac_vocab, "Sunday, 11 March 2007", num = 7, n_s = 64)
-plot_attention_map (model, human_vocab, mac_vocab, "05/12/2021", num = 7, n_s = 64)
+plot_attention_map(model, human_vocab, mac_vocab, "3 May 1995", num = 7, n_s = 64, filename="mapa_1995.png")
+plot_attention_map(model, human_vocab, mac_vocab, "02 Sep 21", num = 7, n_s = 64, filename="mapa_2021_curto.png")
+plot_attention_map(model, human_vocab, mac_vocab, "3 de Julho de 1974", num = 7, n_s = 64, filename="mapa_1974.png")
+plot_attention_map(model, human_vocab, mac_vocab, "Sunday, 11 March 2007", num = 7, n_s = 64, filename="mapa_2007.png")
+plot_attention_map(model, human_vocab, mac_vocab, "05/12/2021", num = 7, n_s = 64, filename="mapa_2021_num.png")
