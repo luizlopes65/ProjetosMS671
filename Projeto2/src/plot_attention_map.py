@@ -18,7 +18,7 @@ def _string_to_int(string, length, vocabulary):
 def _int_to_string(ints, inv_vocabulary):
     return [inv_vocabulary.get(idx, '<unk>') for idx in ints]
 
-def plot_attention_map(modelx, input_vocabulary, output_vocabulary, text, n_s = 64, num = 7):
+def plot_attention_map(modelx, input_vocabulary, output_vocabulary, text, n_s = 64, num = 7, filename='attention_map.png'):
     """
     Plot the attention map.
     """
